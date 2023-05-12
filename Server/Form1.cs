@@ -331,7 +331,7 @@ namespace Server
             try
             {
 
-                string message = "Server~" + textBox1.Text;
+                string message = "Server:" + textBox1.Text;
 
                 // include the length of the message in the first 4 bytes
                 byte[] lengthBytes = BitConverter.GetBytes(message.Length);
