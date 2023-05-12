@@ -9,22 +9,23 @@ using System.Collections.Generic;
 
 namespace Server
 {
-    public partial class Form1 : Form
+    public partial class Server : Form
     {
         Socket mainSoc;
 
         List<BinaryWriter> lstSoc = new List<BinaryWriter>();
 
-        ArrayList lstID = new ArrayList();
+        ArrayList listId = new ArrayList();
 
         int count = 0;
 
         // I used this MRE to synch the asynch calls
         ManualResetEvent mre = new ManualResetEvent(false);
 
-        public Form1()
+        public Server()
         {
             InitializeComponent();
+            
         }
 
         Thread AdvertiseThread;
@@ -104,7 +105,7 @@ namespace Server
 
                 ++count;
 
-                lstID.Add("Client #" + count.ToString());
+                listId.Add("Client #" + count.ToString());
 
                 lstSoc.Add(new BinaryWriter(new NetworkStream(Msoc)));
 
@@ -150,9 +151,9 @@ namespace Server
                     {
                         int x = Find(from);
 
-                        lstID.RemoveAt(x);
+                        listId.RemoveAt(x);
 
-                        lstID.TrimToSize();
+                        listId.TrimToSize();
 
                         lstSoc.RemoveAt(x);
 
@@ -298,9 +299,9 @@ namespace Server
 
         private int Find(string from)
         {
-            for (int i = 0; i < lstID.Count; i++)
+            for (int i = 0; i < listId.Count; i++)
             {
-                if (lstID[i] as string == from)
+                if (listId[i] as string == from)
                     return i;
             }
             return -1;
