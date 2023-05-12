@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace Server
 {
-    public partial class Form1 : Form
+    public partial class Server : Form
     {
         Socket mainSoc;
 
@@ -22,7 +22,7 @@ namespace Server
         // I used this MRE to synch the asynch calls
         ManualResetEvent mre = new ManualResetEvent(false);
 
-        public Form1()
+        public Server()
         {
             InitializeComponent();
         }
